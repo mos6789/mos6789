@@ -1,0 +1,5 @@
+{
+  "name": "Dr. Sidharth Sajeev - Medical Doctor Portfolio",
+  "description": "A professional portfolio for Dr. Sidharth Sajeev, built with React, TypeScript, and Tailwind CSS. Features an interactive AI assistant powered by the Gemini API to answer questions about his medical background and experience.",
+  "requestFramePermissions": []
+}
