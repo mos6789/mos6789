@@ -8,7 +8,7 @@ const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, 
 );
 
 const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
