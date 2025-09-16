@@ -3,8 +3,6 @@ import { GoogleGenAI } from "@google/genai";
 // This function will be deployed as a serverless function on Vercel
 export async function POST(req: Request) {
   try {
-    // FIX: Read both message and systemInstruction from the request body at once.
-    // Reading req.json() multiple times will cause an error.
     const { message, systemInstruction } = await req.json();
     const apiKey = process.env.API_KEY;
 
@@ -14,9 +12,6 @@ export async function POST(req: Request) {
     
     const ai = new GoogleGenAI({ apiKey });
 
-    // FIX: Use ai.models.generateContent directly instead of the deprecated getGenerativeModel,
-    // which resolves the 'getGenerativeModel does not exist' error.
-    // Also, update the model name from 'gemini-1.5-flash-latest' to 'gemini-2.5-flash'.
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: message,
@@ -25,7 +20,6 @@ export async function POST(req: Request) {
       },
     });
 
-    // FIX: Directly access the 'text' property from the response object as per the new API.
     const text = response.text;
 
     return new Response(JSON.stringify({ text }), {
